@@ -1,9 +1,18 @@
+import './index.css'
+
 const Nav = () => {
-    return (
-        <nav>
-            <img src="https://media.licdn.com/dms/image/v2/D4D0BAQGiaARpIEJqwQ/company-logo_200_200/B4DZZth6opH4AQ-/0/1745594330131/niroggyan_logo?e=1756944000&v=beta&t=A6FPAsUc4WIKj3xCzVeSBJCYG5ichI4KQf0dp2e5eEc" alt="Nirog Gyan Logo" className="logo" />
-        </nav>
-    );
-}
+  return (
+    <nav className='nav'>
+      <div className='nav-content'>
+      <img
+        src="https://media.licdn.com/dms/image/v2/D4D0BAQGiaARpIEJqwQ/company-logo_200_200/B4DZZth6opH4AQ-/0/1745594330131/niroggyan_logo?e=1756944000&v=beta&t=A6FPAsUc4WIKj3xCzVeSBJCYG5ichI4KQf0dp2e5eEc"
+        alt="Nirog Gyan Logo"
+        className="logo"
+      />
+      <button className='nav-button'>Get Started</button>
+      </div>
+    </nav>
+  );
+};
 
 export default Nav;

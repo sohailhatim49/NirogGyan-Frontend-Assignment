@@ -1,0 +1,151 @@
+.hero-section {
+  color: rgb(8, 8, 8);
+  background-image: linear-gradient(to bottom, #e5f1ff, #ffffff);
+  height: 35rem;
+  display: flex;
+  flex-direction: column;
+  max-width: 100vw;
+}
+
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 1120px;
+  width: 100%;
+  margin: auto;
+  height: 100%;
+  padding: 0 20px;
+}
+
+@media screen and (max-width: 768px) {
+  .hero-section {
+    height: auto;
+  }
+  .hero-content {
+    padding-top: 20px;
+  }
+}
+
+.hero-text {
+  width: 50%;
+}
+
+@media screen and (max-width: 768px) {
+  .hero-text {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+}
+
+.hero-heading {
+  font-size: 4rem;
+  font-weight: 600;
+  margin-bottom: 80px;
+}
+
+@media screen and (max-width: 768px) {
+  .hero-heading {
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    max-width: 100%;
+  }
+}
+
+.hero-button {
+  font-size: 1rem;
+  font-weight: 500;
+  background-color: #0274ff;
+  padding: 15px 20px;
+  color: white;
+  border: none;
+  border-radius: 100px;
+  cursor: pointer;
+}
+
+.hero-stats {
+  background-color: #9cc0ed;
+  color: white;
+}
+
+.hero-stats-wrapper {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 5%;
+  max-width: 1120px;
+  margin: auto;
+  position: relative;
+}
+
+@media screen and (max-width: 768px) {
+  .hero-stats-wrapper {
+    justify-content: center;
+  }
+}
+
+.stat-heading {
+  font-size: 2.5rem;
+  font-weight: 500;
+  margin: 0;
+}
+
+@media screen and (max-width: 768px) {
+  .stat-heading {
+    font-size: 1.5rem;
+  }
+}
+
+.stat-para {
+  margin: 0;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+}
+
+.image-wrapper {
+  position: absolute;
+  bottom: 0px;
+  line-height: 0;
+  right: 0;
+  height: 30rem;
+}
+
+@media screen and (max-width: 768px) {
+  .image-wrapper {
+    display: none;
+  }
+}
+
+.hero-image {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
+
+.hero-image-mobile {
+  display: none;
+}
+
+.hero-image-wrapper {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  .hero-image-mobile {
+    display: block;
+    height: 100%;
+  }
+  .hero-image-wrapper {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 50%;
+  }
+}
