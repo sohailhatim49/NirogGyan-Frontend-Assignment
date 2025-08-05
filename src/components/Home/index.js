@@ -1,8 +1,82 @@
 import Nav from "../Nav";
 import Card from "../Card";
 import "./index.css";
+import { ClipLoader } from "react-spinners";
+import { useState, useEffect } from "react";
+import { IoSearchOutline } from "react-icons/io5";
 
 const Home = () => {
+  const apiStatusConstants = {
+    initial: "INITIAL",
+    inProgress: "IN_PROGRESS",
+    success: "SUCCESS",
+    failure: "FAILURE",
+  };
+
+  const [apiStatus, setApiStatus] = useState({
+    status: apiStatusConstants.initial,
+    data: null,
+  });
+
+  useEffect(() => {
+    const getAppointments = async () => {
+      setApiStatus({ status: apiStatusConstants.inProgress, data: null });
+
+      const response = await fetch("https://www.jsonkeeper.com/b/LZRVL");
+      const data = await response.json();
+      if (response.ok) {
+        setApiStatus({
+          status: apiStatusConstants.success,
+          data: data,
+        });
+      } else {
+        setApiStatus({
+          status: apiStatusConstants.failure,
+          data: null,
+        });
+      }
+      console.log(data);
+    };
+    getAppointments();
+  }, []);
+
+  const renderLoadingView = () => {
+    return (
+      <div>
+        <ClipLoader color="#36d7b7" size={50} />
+        <p>Loading...</p>
+      </div>
+    );
+  };
+
+  const renderSuccessView = () => {
+    const { data } = apiStatus;
+    return (
+      <div className="cards-section">
+        {data.map((item) => (
+          <>
+            <p>{item.name}</p>
+            <Card key={item.id} id={item.id} name={item.name} />
+          </>
+        ))}
+      </div>
+    );
+  };
+
+  const renderCards = () => {
+    const { status } = apiStatus;
+    switch (status) {
+      case apiStatusConstants.inProgress:
+        return renderLoadingView();
+      case apiStatusConstants.success:
+        return renderSuccessView();
+      case apiStatusConstants.failure:
+        return <p>Failed to load data</p>;
+      default:
+        return null;
+    }
+  };
+
   return (
     <div>
       <Nav />
@@ -44,7 +118,20 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <Card />
+      <div className="home-card-container">
+        <div className="card-section-header">
+          <h3 className="card-heading">All Doctors</h3>
+          <div className="search-input-wrapper">
+            <input
+              type="text"
+              placeholder="Search by name or specialty"
+              className="search-input"
+            />
+            <IoSearchOutline />
+          </div>
+        </div>
+      </div>
+      {renderCards()}
     </div>
   );
 };
