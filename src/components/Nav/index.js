@@ -1,5 +1,6 @@
 import './index.css'
 import { Link } from "react-router-dom";
+import { HashLink } from 'react-router-hash-link';
 
 const Nav = () => {
   return (
@@ -12,7 +13,8 @@ const Nav = () => {
         className="logo"
       />
       </Link>
-      <button className='nav-button'>Get Started</button>
+      <HashLink to="/#booking"><button className='nav-button'>Get Started</button></HashLink>
+      
       </div>
     </nav>
   );

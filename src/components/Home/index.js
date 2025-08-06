@@ -93,7 +93,8 @@ const Home = () => {
         <div className="hero-content">
           <div className="hero-text">
             <h1 className="hero-heading">Quality & expert health-care</h1>
-            <button className="hero-button">Book an Appointment</button>
+            <a href="#booking"><button className="hero-button">Book an Appointment</button></a>
+            
           </div>
           <div className="hero-image-wrapper">
             <img
@@ -127,7 +128,7 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <div className="home-card-container">
+      <div className="home-card-container" id='booking'>
         <div className="card-section-header">
           <h3 className="card-heading">All Doctors</h3>
           <div className="search-input-wrapper">
