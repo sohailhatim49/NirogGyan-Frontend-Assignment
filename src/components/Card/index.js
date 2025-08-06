@@ -5,11 +5,14 @@ import {
   FaCircleDot,
 } from "react-icons/fa6";
 
+import {Link} from "react-router-dom";
+
 import "./index.css";
 
 const Card = (props) => {
   const { item } = props;
   const {
+    id,
     name,
     patients_treated,
     profile_image,
@@ -29,9 +32,11 @@ const Card = (props) => {
               <FaCircleDot />
               <p className="status-text">{status}</p>
             </div>
+            <Link to={`/profile/${id}`}>
             <button className="book-appointment-button">
               Book Appointment
             </button>
+            </Link>
           </div>
         );
       case "Fully Booked":

@@ -3,7 +3,7 @@ import Card from "../Card";
 import "./index.css";
 import { ClipLoader } from "react-spinners";
 import { useState, useEffect } from "react";
-import { IoSearchOutline } from "react-icons/io5";
+import { IoSearchOutline, IoThermometer } from "react-icons/io5";
 
 const Home = () => {
   const apiStatusConstants = {
@@ -15,28 +15,29 @@ const Home = () => {
 
   const [apiStatus, setApiStatus] = useState({
     status: apiStatusConstants.initial,
-    data: null,
+    data: [],
+    searchInput:"",
   });
 
   useEffect(() => {
     const getAppointments = async () => {
-      setApiStatus({ status: apiStatusConstants.inProgress, data: null });
+      setApiStatus((prevState)=>({ ...prevState,status: apiStatusConstants.inProgress, data: null,  }));
 
       const response = await fetch("https://www.jsonkeeper.com/b/JJIOG");
       const data = await response.json();
       if (response.ok) {
-        setApiStatus({
+        setApiStatus((prevState) => ({
+          ...prevState,
           status: apiStatusConstants.success,
           data: data,
-        });
+        }));
       } else {
-        setApiStatus({
+        setApiStatus((prevState) => ({
+          ...prevState,
           status: apiStatusConstants.failure,
-          data: null,
-        });
-      }
-      console.log(data);
-    };
+          data: [],
+        }));
+      }};
     getAppointments();
   }, []);
 
@@ -44,16 +45,20 @@ const Home = () => {
     return (
       <div className="cards-section-loading">
         <ClipLoader color="#36d7b7" size={50} />
-        <p>Loading...</p>
       </div>
     );
   };
 
   const renderSuccessView = () => {
-    const { data } = apiStatus;
+    const { data,searchInput } = apiStatus;
+    const filteredData = data.filter(item =>
+      item.name.toLowerCase().includes(searchInput.toLowerCase()) ||
+      item.specialization.toLowerCase().includes(searchInput.toLowerCase())
+      )
+      
     return (
       <div className="cards-section">
-        {data.map((item) => (
+        {filteredData.map((item) => (
           <Card key={item.id} item={item} />
         ))}
       </div>
@@ -72,6 +77,13 @@ const Home = () => {
       default:
         return null;
     }
+  };
+
+  const onChangeSearchInput = (event) => {
+    setApiStatus((prevState) => ({
+      ...prevState,
+      searchInput: event.target.value,
+    }));
   };
 
   return (
@@ -120,9 +132,11 @@ const Home = () => {
           <h3 className="card-heading">All Doctors</h3>
           <div className="search-input-wrapper">
             <input
-              type="text"
+              type="search"
               placeholder="Search by name or specialty"
               className="search-input"
+              value={apiStatus.searchInput}
+              onChange={onChangeSearchInput}
             />
             <IoSearchOutline />
           </div>
