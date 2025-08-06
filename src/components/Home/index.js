@@ -22,7 +22,7 @@ const Home = () => {
     const getAppointments = async () => {
       setApiStatus({ status: apiStatusConstants.inProgress, data: null });
 
-      const response = await fetch("https://www.jsonkeeper.com/b/LZRVL");
+      const response = await fetch("https://www.jsonkeeper.com/b/JJIOG");
       const data = await response.json();
       if (response.ok) {
         setApiStatus({
@@ -42,7 +42,7 @@ const Home = () => {
 
   const renderLoadingView = () => {
     return (
-      <div>
+      <div className="cards-section-loading">
         <ClipLoader color="#36d7b7" size={50} />
         <p>Loading...</p>
       </div>
@@ -54,10 +54,7 @@ const Home = () => {
     return (
       <div className="cards-section">
         {data.map((item) => (
-          <>
-            <p>{item.name}</p>
-            <Card key={item.id} id={item.id} name={item.name} />
-          </>
+          <Card key={item.id} item={item} />
         ))}
       </div>
     );
