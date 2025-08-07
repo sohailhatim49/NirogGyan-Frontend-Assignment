@@ -114,7 +114,7 @@
 }
 
 .active-time{
-  border-color: #020c18;
+  border: 2px solid #020c18;
 }
 
 .time-text {
@@ -137,4 +137,72 @@
 
 .active-btn{
   background-color: #0274ff;
+}
+
+.popup-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 16px;
+  width: 80%;
+  max-width: 600px;
+}
+
+.popup{
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: center;
+  gap: 20px;
+}
+
+.popup-title{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.popup-time{
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #3f3f3f;
+}
+
+@media screen and (max-width: 768px) {
+  .popup-time {
+    font-size: 1rem;
+  }
+  
+}
+
+.popup-time-schedule{
+  color: #0274ff;
+  font-weight: 600;
+}
+
+.form-input{
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.popup-label{
+  font-size: 0.9rem;
+  color: #3f3f3f;
+  margin-bottom: 8px;
+}
+
+.popup-input{
+  padding: 10px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 0.9rem;
+}
+
+.trigger-button{
+  border: none;
+  background-color: transparent;
+  font-size: 2rem;
+  height: 100%;
+  width: auto;
+  cursor: pointer;
 }

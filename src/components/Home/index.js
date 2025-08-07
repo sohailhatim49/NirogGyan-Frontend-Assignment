@@ -3,7 +3,7 @@ import Card from "../Card";
 import "./index.css";
 import { ClipLoader } from "react-spinners";
 import { useState, useEffect } from "react";
-import { IoSearchOutline, IoThermometer } from "react-icons/io5";
+import { IoSearchOutline} from "react-icons/io5";
 
 const Home = () => {
   const apiStatusConstants = {

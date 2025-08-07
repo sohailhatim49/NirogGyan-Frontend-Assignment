@@ -1,5 +1,7 @@
 import "./index.css";
 import { useState } from "react";
+import { IoIosClose } from "react-icons/io";
+import Popup from "reactjs-popup";
 
 const formatDate = (dateString) => {
   const date = new Date(dateString);
@@ -81,12 +83,14 @@ const Schedule = (props) => {
               each.date === activeDate &&
               each.slots.map((item) => {
                 const activeTimeClass =
-                  state.activeTime === item ? "active-time" : "";
+                  state.activeTime === convertTo12Hour(item)
+                    ? "active-time"
+                    : "";
                 return (
                   <li key={each.item}>
                     <button
                       className={`time-chip ${activeTimeClass}`}
-                      onClick={selectTime(item)}
+                      onClick={selectTime(convertTo12Hour(item))}
                     >
                       <p className="time-text">{convertTo12Hour(item)}</p>
                     </button>
@@ -96,9 +100,75 @@ const Schedule = (props) => {
           )}
         </ul>
       </div>
-      <button className={`book-session-btn ${activeBtn}`}>
-        Book Session on {formatDate(activeDate)}
-      </button>
+      <div className="popup-container">
+        <Popup
+          modal
+          overlayStyle={{ background: "rgba(0, 0, 0, 0.7)" }}
+          trigger={
+            <button
+              className={`book-session-btn ${activeBtn}`}
+              disabled={state.activeTime === null}
+            >
+              Book Session on {formatDate(activeDate)}
+            </button>
+          }
+        >
+          {(close) => (
+            <div className="popup">
+              <div className="popup-title">
+                <h2>Confirm Booking</h2>
+
+                <button
+                  type="button"
+                  className="trigger-button"
+                  onClick={() => close()}
+                >
+                  <IoIosClose />
+                </button>
+              </div>
+              <div className="popup-date">
+                <p className="popup-time">
+                  Appointment on{" "}
+                  <span className="popup-time-schedule">
+                    {formatDate(state.activeDate)} {state.activeTime}
+                  </span>
+                </p>
+              </div>
+              <form>
+                <div className="form-input">
+                  <label className="popup-label">Name</label>
+                  <input
+                    type="text"
+                    className="popup-input"
+                    placeholder="Enter your name"
+                    required
+                  />
+                </div>
+                <div className="form-input">
+                  <label className="popup-label">Email</label>
+                  <input
+                    type="email"
+                    className="popup-input"
+                    placeholder="Enter your email"
+                    required
+                  />
+                </div>
+                <div className="form-input">
+                  <label className="popup-label">Message</label>
+                  <textarea
+                    className="popup-input"
+                    placeholder="Enter your message"
+                    rows="4"
+                  ></textarea>
+                </div>
+                <button className="book-session-btn active-btn" type="submit">
+                  Book Session
+                </button>
+              </form>
+            </div>
+          )}
+        </Popup>
+      </div>
     </div>
   );
 };

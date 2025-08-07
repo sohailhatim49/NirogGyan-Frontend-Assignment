@@ -143,9 +143,8 @@ const Profile = () => {
             </div>
           </div>
           <div className="schedule-desktop">
-<Schedule available_dates={available_dates} />
+            <Schedule available_dates={available_dates} />
           </div>
-          
         </div>
       </div>
     );
