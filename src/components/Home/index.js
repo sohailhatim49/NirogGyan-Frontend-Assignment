@@ -57,11 +57,11 @@ const Home = () => {
       )
       
     return (
-      <div className="cards-section">
+      <ul className="cards-section">
         {filteredData.map((item) => (
           <Card key={item.id} item={item} />
         ))}
-      </div>
+      </ul>
     );
   };
 

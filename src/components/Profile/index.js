@@ -1,4 +1,5 @@
 import Nav from "../Nav";
+import Schedule from "../Schedule";
 import { useState, useEffect } from "react";
 import { ClipLoader } from "react-spinners";
 import { useParams } from "react-router-dom";
@@ -19,13 +20,6 @@ const Profile = () => {
     status: apiStatusConstants.initial,
     data: null,
   });
-
-  const formatDate = (dateString) => {
-  const date = new Date(dateString);
-  return date.toLocaleDateString('en-US', { month: 'short', day: '2-digit' });
-};
-
-
 
   useEffect(() => {
     const getAppointments = async () => {
@@ -71,7 +65,7 @@ const Profile = () => {
       description,
       education,
       testimonials,
-      available_dates
+      available_dates,
     } = data;
     return (
       <div className="profile-section">
@@ -145,20 +139,7 @@ const Profile = () => {
             </div>
           </div>
 
-          <div className="schedule">
-            <div>
-              <strong>
-                <p className="education-degree">Available sessions</p>
-              </strong>
-              <p className="book-sub-heading">Book 1:1 sessions from the options</p>
-            </div>
-            <ul className="dates">
-              {available_dates.map((each) => (
-                
-              <li className="date">{formatDate(each.date)}</li>
-              ))}
-            </ul>
-          </div>
+          <Schedule available_dates={available_dates} />
         </div>
       </div>
     );

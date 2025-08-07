@@ -63,7 +63,7 @@ const Card = (props) => {
   };
 
   return (
-    <div className="card">
+    <li className="card">
       <div className="card-image-wrapper">
         <img
           className="card-image"
@@ -91,7 +91,7 @@ const Card = (props) => {
         </div>
         {renderStatus()}
       </div>
-    </div>
+    </li>
   );
 };
 

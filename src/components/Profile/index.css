@@ -1,112 +1,96 @@
-.profile-section{
-    display: flex;
-    flex-direction: column;
-    background-image: linear-gradient(to bottom, #e5f1ff, #ffffff);
-    
+.profile-section {
+  display: flex;
+  flex-direction: column;
+  background-image: linear-gradient(to bottom, #e5f1ff, #ffffff);
 }
 
-.profile-container{
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    padding: 20px;
-    width: 100%;
-    max-width: 1120px;
-    margin: auto;
+.profile-container {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 20px;
+  width: 100%;
+  max-width: 1120px;
+  margin: auto;
 }
 
-.profile-details{
-    width: 70%;
+.profile-details {
+  width: 70%;
 }
 
-.profile-header{
-    display: flex;
-    flex-direction: column;
+.profile-header {
+  display: flex;
+  flex-direction: column;
 }
 
-.profile-essentials{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin-bottom: 20px;
+.profile-essentials {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 20px;
 }
 
-.profile-image{
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-right: 20px;
+.profile-image {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 20px;
 }
 
-.profile-name{
-    margin-bottom: 8px;
+.profile-name {
+  margin-bottom: 8px;
 }
 
-.profile-stats{
-    display: flex;
-    gap: 16px;
-    color: #333333;
+.profile-stats {
+  display: flex;
+  gap: 16px;
+  color: #333333;
 }
 
-hr{
-    border: 0.5px solid #e0e0e0;
-    margin: 40px 0;
+hr {
+  border: 0.5px solid #e0e0e0;
+  margin: 40px 0;
 }
 
-.desc-title{
-    font-size: 1.2rem;
+.desc-title {
+  font-size: 1.2rem;
   font-weight: 600;
   margin: 0;
   color: rgb(32, 32, 32);
   margin-bottom: 10px;
 }
 
-.description{
-    color: #333333;
+.description {
+  color: #333333;
 }
 
-.education-list{
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    margin-top: 30px;
+.education-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  margin-top: 30px;
 }
 
-.education-item{
-    display: flex;
-    flex-direction: column;
-    padding: 20px;
-    border: 1px solid #e0e0e0  ;
-    border-radius: 16px;
-    margin-bottom: 20px;
+.education-item {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  border: 1px solid #e0e0e0;
+  border-radius: 16px;
+  margin-bottom: 20px;
 }
 
-.education-degree{
-    margin-bottom: 10px;
+.education-degree {
+  margin-bottom: 10px;
 }
 
-.college{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 4px;
-    color: #747474;
-}
-
-.schedule{
-    width: 30%;
-    padding: 20px;
-    border: 1px solid #e0e0e0;
-    background-color: white;
-    border-radius: 16px;
-    margin-left: 20px;
-    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.07);
-}
-
-.book-sub-heading{
-    font-size: 0.75rem;
-    color: #747474;
+.college {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 4px;
+  color: #747474;
 }
 
 

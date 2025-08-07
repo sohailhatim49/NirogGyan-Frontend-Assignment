@@ -1,0 +1,101 @@
+.schedule {
+  width: 30%;
+  padding: 20px;
+  border: 1px solid #e0e0e0;
+  background-color: white;
+  border-radius: 16px;
+  margin-left: 20px;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.07);
+  position: sticky;
+  top: 20px;
+}
+
+.schedule-header {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.book-sub-heading {
+  font-size: 0.75rem;
+  color: #747474;
+}
+
+.dates {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  margin-top: 20px;
+  gap: 10px;
+  display: flex;
+  justify-content: flex-start;
+  overflow-x: auto;
+  padding-bottom: 10px;
+}
+
+.date {
+  width: 100px;
+  height: 100px;
+  border: #a8a8a8 1px solid;
+  border-radius: 16px;
+  padding: 10px;
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: 600;
+}
+
+.dates::-webkit-scrollbar {
+  height: 8px;
+}
+
+.dates::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 8px;
+}
+
+.time {
+  font-size: 12px;
+  color: #4ae325;
+}
+
+.day {
+  font-size: 12px;
+  color: #8d8d8d;
+  font-weight: 600;
+}
+
+.hr{
+    margin: 0;
+}
+
+.active-date{
+  border: 2px solid #020c18;
+}
+
+.times{
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  margin-top: 20px;
+  gap: 10px;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+.time-chip{
+  padding: 12px;
+  border: 1px solid #a8a8a8;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+}
+
+.time-text {
+  font-size: 12px;
+  color: #8d8d8d;
+  font-weight: 600;
+}
