@@ -97,6 +97,10 @@ const Profile = () => {
               </div>
             </div>
             <hr />
+            <div className="schedule-mobile">
+              <Schedule available_dates={available_dates} />
+            </div>
+
             <div className="profile-description-wrapper">
               <h3 className="desc-title">Description</h3>
               <p className="description">{description}</p>
@@ -138,8 +142,10 @@ const Profile = () => {
               </ul>
             </div>
           </div>
-
-          <Schedule available_dates={available_dates} />
+          <div className="schedule-desktop">
+<Schedule available_dates={available_dates} />
+          </div>
+          
         </div>
       </div>
     );

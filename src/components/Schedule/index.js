@@ -1,5 +1,5 @@
 import "./index.css";
-import {useState } from "react";
+import { useState } from "react";
 
 const formatDate = (dateString) => {
   const date = new Date(dateString);
@@ -24,8 +24,25 @@ const Schedule = (props) => {
   const { available_dates } = props;
   const [state, setState] = useState({
     activeDate: available_dates[0].date,
+    activeTime: null,
   });
   const activeDate = state.activeDate;
+  const activeBtn = state.activeTime ? "active-btn" : "";
+
+  const changeDate = (date) => () => {
+    setState((prevState) => ({
+      ...prevState,
+      activeDate: date,
+      activeTime: null,
+    }));
+  };
+
+  const selectTime = (time) => () => {
+    setState((prevState) => ({
+      ...prevState,
+      activeTime: time,
+    }));
+  };
 
   return (
     <div className="schedule">
@@ -39,10 +56,15 @@ const Schedule = (props) => {
             const activeDateClass =
               activeDate === each.date ? "active-date" : "";
             return (
-              <li className={`date ${activeDateClass}`} key={each.date}>
-                <p className="day">{formatDay(each.date)}</p>
-                {formatDate(each.date)}
-                <p className="time">{each.slots.length} slots</p>
+              <li key={each.date}>
+                <button
+                  className={`date ${activeDateClass}`}
+                  onClick={changeDate(each.date)}
+                >
+                  <p className="day">{formatDay(each.date)}</p>
+                  <p className="full-date">{formatDate(each.date)}</p>
+                  <p className="time">{each.slots.length} slots</p>
+                </button>
               </li>
             );
           })}
@@ -54,15 +76,29 @@ const Schedule = (props) => {
         </strong>
         <hr className="hr" />
         <ul className="times">
-          {available_dates.map((each) => each.date === activeDate &&
-            each.slots.map((item) => (
-              <li className="time-chip" key={each.item}>
-                <p className="time-text">{convertTo12Hour(item)}</p>
-              </li>
-            ))
+          {available_dates.map(
+            (each) =>
+              each.date === activeDate &&
+              each.slots.map((item) => {
+                const activeTimeClass =
+                  state.activeTime === item ? "active-time" : "";
+                return (
+                  <li key={each.item}>
+                    <button
+                      className={`time-chip ${activeTimeClass}`}
+                      onClick={selectTime(item)}
+                    >
+                      <p className="time-text">{convertTo12Hour(item)}</p>
+                    </button>
+                  </li>
+                );
+              })
           )}
         </ul>
       </div>
+      <button className={`book-session-btn ${activeBtn}`}>
+        Book Session on {formatDate(activeDate)}
+      </button>
     </div>
   );
 };

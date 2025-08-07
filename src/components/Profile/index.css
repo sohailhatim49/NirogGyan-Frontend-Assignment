@@ -18,6 +18,18 @@
   width: 70%;
 }
 
+@media screen and (max-width: 768px) {
+  .profile-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .profile-details {
+    width: 100%;
+  }
+  
+}
+
 .profile-header {
   display: flex;
   flex-direction: column;
@@ -93,4 +105,22 @@ hr {
   color: #747474;
 }
 
+.schedule-desktop {
+  display: block;
+  width: 30%;
+  margin-left: 20px;
+}
 
+.schedule-mobile {
+  display: none;
+} 
+
+@media screen and (max-width: 768px) {
+  .schedule-mobile {
+    display: block;
+  }
+  
+  .schedule-desktop {
+    display: none;
+  }
+}
