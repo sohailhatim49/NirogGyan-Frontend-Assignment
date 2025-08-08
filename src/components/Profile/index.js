@@ -56,6 +56,7 @@ const Profile = () => {
   const renderSuccessView = () => {
     const { data } = apiStatus;
     const {
+      id,
       name,
       patients_treated,
       profile_image,
@@ -98,7 +99,7 @@ const Profile = () => {
             </div>
             <hr />
             <div className="schedule-mobile">
-              <Schedule available_dates={available_dates} />
+              <Schedule available_dates={available_dates} id={id} name={name} />
             </div>
 
             <div className="profile-description-wrapper">
@@ -137,13 +138,14 @@ const Profile = () => {
                     <div className="college">
                       <p className="education-institution">{each.feedback}</p>
                     </div>
+                    
                   </li>
                 ))}
               </ul>
             </div>
           </div>
           <div className="schedule-desktop">
-            <Schedule available_dates={available_dates} />
+            <Schedule available_dates={available_dates} id={id} name={name}/>
           </div>
         </div>
       </div>

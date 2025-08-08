@@ -206,3 +206,24 @@
   width: auto;
   cursor: pointer;
 }
+
+.success-view{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  text-align: center;
+  height: 400px;
+}
+
+.check{
+  font-size: 3rem;
+  color:#0274ff ;
+}
+
+.success-message{
+  line-height: 1.5;
+  color: #3f3f3f;
+
+}

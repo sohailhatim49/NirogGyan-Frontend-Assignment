@@ -1,7 +1,10 @@
 import "./index.css";
 import { useState } from "react";
 import { IoIosClose } from "react-icons/io";
+import { FaCheckCircle } from "react-icons/fa";
 import Popup from "reactjs-popup";
+import MyContext from "../../context";
+import { useContext } from "react";
 
 const formatDate = (dateString) => {
   const date = new Date(dateString);
@@ -23,7 +26,8 @@ const convertTo12Hour = (time24) => {
 };
 
 const Schedule = (props) => {
-  const { available_dates } = props;
+  const { bookings, insertBookings } = useContext(MyContext);
+  const { available_dates, id, name } = props;
   const [state, setState] = useState({
     activeDate: available_dates[0].date,
     activeTime: null,
@@ -46,8 +50,19 @@ const Schedule = (props) => {
     }));
   };
 
-  return (
-    <div className="schedule">
+  const formSubmit = (event, closeModal) => {
+    const { activeDate, activeTime } = state;
+    event.preventDefault();
+
+    insertBookings((pState) => {
+      const exists = pState.some((each) => each.id === id);
+      return exists ? pState : [...pState, { id, activeDate, activeTime }];
+    });
+    closeModal();
+  };
+
+  const renderScheduleCard = () => (
+    <>
       <div className="schedule-header">
         <strong>
           <p className="education-degree">Available sessions</p>
@@ -113,7 +128,7 @@ const Schedule = (props) => {
             </button>
           }
         >
-          {(close) => (
+          {(closeModal) => (
             <div className="popup">
               <div className="popup-title">
                 <h2>Confirm Booking</h2>
@@ -121,7 +136,7 @@ const Schedule = (props) => {
                 <button
                   type="button"
                   className="trigger-button"
-                  onClick={() => close()}
+                  onClick={() => closeModal()}
                 >
                   <IoIosClose />
                 </button>
@@ -134,7 +149,7 @@ const Schedule = (props) => {
                   </span>
                 </p>
               </div>
-              <form>
+              <form onSubmit={(e) => formSubmit(e, closeModal)}>
                 <div className="form-input">
                   <label className="popup-label">Name</label>
                   <input
@@ -169,8 +184,35 @@ const Schedule = (props) => {
           )}
         </Popup>
       </div>
-    </div>
+    </>
   );
+
+  const renderSuccessView = () => {
+    const booking = bookings.filter((each)=>each.id===id)[0]
+    return (
+      <div className="success-view">
+        <FaCheckCircle className="check" />
+        <h3>Congratulations</h3>
+        <p className="success-message">
+          <span className="light">You have an upcoming oppointment with </span>{" "}
+          <br />
+          <strong>{name}</strong> on <strong>{formatDate(booking.activeDate)}</strong> at{" "}
+          <strong>{booking.activeTime}</strong>
+        </p>
+      </div>
+    );
+  };
+
+  const renderSchedule = () => {
+    switch (true) {
+      case bookings.some(each=>each.id===id):
+        return renderSuccessView();
+      default:
+        return renderScheduleCard();
+    }
+  };
+
+  return <div className="schedule">{renderSchedule()}</div>;
 };
 
 export default Schedule;
