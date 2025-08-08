@@ -48,7 +48,6 @@ const Profile = () => {
     return (
       <div className="cards-section-loading">
         <ClipLoader color="#36d7b7" size={50} />
-        <p>Loading...</p>
       </div>
     );
   };
